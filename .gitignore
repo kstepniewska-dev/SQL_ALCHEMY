@@ -1,0 +1,12 @@
+instance
+.venv
+workspace
+__pycache__/
+*.pyc
+.env
+.env.*
+.idea/
+.vscode/
+.DS_Store
+logs/
+*.log

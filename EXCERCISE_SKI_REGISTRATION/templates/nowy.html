@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Nowe Zgłoszenie{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3>Formularz Rejestracji na Wyjazd Narciarski</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="imie" class="form-label">Imię *</label>
+                            <input type="text" class="form-control" id="imie" name="imie" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="nazwisko" class="form-label">Nazwisko *</label>
+                            <input type="text" class="form-control" id="nazwisko" name="nazwisko" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="telefon" class="form-label">Telefon *</label>
+                            <input type="tel" class="form-control" id="telefon" name="telefon" required>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="poziom_narciarski" class="form-label">Poziom narciarski</label>
+                        <select class="form-select" id="poziom_narciarski" name="poziom_narciarski">
+                            <option value="początkujący">Początkujący</option>
+                            <option value="średniozaawansowany" selected>Średniozaawansowany</option>
+                            <option value="zaawansowany">Zaawansowany</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="uwagi" class="form-label">Uwagi (opcjonalne)</label>
+                        <textarea class="form-control" id="uwagi" name="uwagi" rows="4"
+                                  placeholder="Dodatkowe informacje, np. preferencje co do pokoju, diety, itp."></textarea>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">Zapisz się na wyjazd</button>
+                        <a href="/" class="btn btn-secondary">Anuluj</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

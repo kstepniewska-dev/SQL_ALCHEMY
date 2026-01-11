@@ -1,0 +1,52 @@
+# Baza danych SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# Środowisko wirtualne Python
+venv/
+.venv/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Flask
+instance/
+.webassets-cache
+
+# Migracje (opcjonalnie - niektórzy commitują)
+# migrations/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# System
+.DS_Store
+Thumbs.db
+
+# Logi
+*.log
+
+# Pliki tymczasowe
+*.tmp
+*.bak
+*.swp
+
+# Pliki konfiguracyjne z secretami
+.env
+.env.local
+config.py
+
+# Coverage
+.coverage
+htmlcov/

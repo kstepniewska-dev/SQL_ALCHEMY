@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Szczegóły Zgłoszenia{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3>Szczegóły Zgłoszenia #{{ form.id }}</h3>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <h5>Dane osobowe</h5>
+                        <table class="table table-borderless">
+                            <tr>
+                                <th width="40%">Imię:</th>
+                                <td>{{ form.imie }}</td>
+                            </tr>
+                            <tr>
+                                <th>Nazwisko:</th>
+                                <td>{{ form.nazwisko }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email:</th>
+                                <td><a href="mailto:{{ form.email }}">{{ form.email }}</a></td>
+                            </tr>
+                            <tr>
+                                <th>Telefon:</th>
+                                <td>{{ form.telefon }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Informacje o wyjeździe</h5>
+                        <table class="table table-borderless">
+                            <tr>
+                                <th width="50%">Poziom narciarski:</th>
+                                <td><span class="badge bg-info">{{ form.poziom_narciarski }}</span></td>
+                            </tr>
+                            <tr>
+                                <th>Data rejestracji:</th>
+                                <td>{{ form.data_rejestracji if form.data_rejestracji else 'N/A' }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <h5>Uwagi</h5>
+                        <div class="p-3 bg-light rounded">
+                            {{ form.uwagi if form.uwagi else 'Brak uwag' }}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <a href="/" class="btn btn-secondary">Powrót do listy</a>
+                        <form method="POST" action="/usun/{{ form.id }}" style="display: inline;">
+                            <button type="submit" class="btn btn-danger"
+                                    onclick="return confirm('Czy na pewno chcesz usunąć to zgłoszenie?')">
+                                Usuń zgłoszenie
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

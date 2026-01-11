@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Lista Zgłoszeń{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Lista Zgłoszeń na Wyjazd Narciarski</h2>
+            <a href="/nowy" class="btn btn-primary">+ Nowe Zgłoszenie</a>
+        </div>
+
+        {% if forms %}
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Imię i Nazwisko</th>
+                            <th>Email</th>
+                            <th>Telefon</th>
+                            <th>Poziom</th>
+                            <th>Data Rejestracji</th>
+                            <th>Akcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for form in forms %}
+                        <tr>
+                            <td>{{ form.id }}</td>
+                            <td>{{ form.imie }} {{ form.nazwisko }}</td>
+                            <td>{{ form.email }}</td>
+                            <td>{{ form.telefon }}</td>
+                            <td>
+                                <span class="badge bg-info">{{ form.poziom_narciarski }}</span>
+                            </td>
+                            <td>{{ form.data_rejestracji.strftime('%d.%m.%Y %H:%M') if form.data_rejestracji else 'N/A' }}</td>
+                            <td>
+                                <a href="/formularz/{{ form.id }}" class="btn btn-sm btn-info">Szczegóły</a>
+                                <form method="POST" action="/usun/{{ form.id }}" style="display: inline;">
+                                    <button type="submit" class="btn btn-sm btn-danger"
+                                            onclick="return confirm('Czy na pewno chcesz usunąć to zgłoszenie?')">
+                                        Usuń
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <div class="alert alert-info">
+                <h4 class="alert-heading">Brak zgłoszeń</h4>
+                <p>Nie ma jeszcze żadnych zgłoszeń na wyjazd narciarski.</p>
+                <hr>
+                <p class="mb-0">
+                    <a href="/nowy" class="btn btn-primary">Dodaj pierwsze zgłoszenie</a>
+                </p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

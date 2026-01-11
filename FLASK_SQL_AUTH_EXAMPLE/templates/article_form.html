@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{% if article %}Edit Article{% else %}New Article{% endif %}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3>{% if article %}Edit Article{% else %}Create New Article{% endif %}</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" value="{{ article.title if article else '' }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Content</label>
+                        <textarea class="form-control" id="content" name="content" rows="10" required>{{ article.content if article else '' }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">{% if article %}Update{% else %}Create{% endif %} Article</button>
+                    <a href="/articles" class="btn btn-secondary">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
